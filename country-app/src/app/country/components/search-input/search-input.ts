@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, output} from '@angular/core';
 
 @Component({
   selector: 'search-search-input',
@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './search-input.html',
 })
 export class SearchInput {
-  onSearch(valor: string) {
-    console.log({ valor });
-  }
+  value=output<String>();
 }
