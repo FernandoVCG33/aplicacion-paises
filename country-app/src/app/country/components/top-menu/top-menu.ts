@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import {RouterLinkActive} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'country-top-menu',
   imports: [
-    RouterLinkActive
+    RouterLinkActive,
+    RouterLink
   ],
   templateUrl: './top-menu.html',
 
