@@ -23,10 +23,18 @@ export class ByCapitalPageComponent {
     this.isLoading.set(true);
     this.isError.set(null)
     this.countryService.searchBycapital(query)
-      .subscribe((country)=>{
-      this.isLoading.set(false);
-      this.countries.set(country);
-      console.log(country);
-      });
+      .subscribe(
+        {
+          next:(countries)=>{
+            this.isLoading.set(false);
+            this.countries.set(countries);
+          },
+          error:(err)=>{
+            this.isLoading.set(false);
+            this.countries.set([]);
+            this.isError.set(`No se encontraron resultados para :${query}`);
+          }
+        },
+      );
     }
 }

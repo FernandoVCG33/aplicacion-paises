@@ -6,9 +6,9 @@ export  class CountryMapper {
     return {
       capital:restCountry.capital.join(','),
       cca2:restCountry.cca2,
-      flag:restCountry.flags.png,
+      flag:restCountry.flag,
       flagSvg:restCountry.flags.svg,
-      name:restCountry.name.common,
+      name:restCountry.translations['spa'].common ?? 'NO SE ENCONTRÓ NOMBRE',
       population:restCountry.population,
     }
   }

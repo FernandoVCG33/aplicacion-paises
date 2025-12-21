@@ -15,7 +15,7 @@
       @for(country of countries(); track country.cca2; let index = $index) {
           <tr>
             <td>{{index+1}}</td>
-            <td>{{country.flag}}</td>
+            <td>{{ country.flag }}</td>
             <td>
               <img class="w-10" [src]="country.flagSvg" [alt]="country.name">
             </td>
@@ -26,7 +26,7 @@
               {{country.capital}}
             </td>
             <td>
-              {{country.population}}
+              <span class="badge badge-secondary">{{country.population | number}}</span>
             </td>
             <td>
               <a  class="link-primary">Más información </a>
