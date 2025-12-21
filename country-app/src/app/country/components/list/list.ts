@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import {RestCountry} from '../../interfaces/rest-countries.interfaces';
+import type {Country} from '../../interfaces/country.interface';
 
 @Component({
   selector: 'search-list',
@@ -7,5 +7,5 @@ import {RestCountry} from '../../interfaces/rest-countries.interfaces';
   templateUrl: './list.html',
 })
 export class List {
-  countries=input.required<RestCountry[]>();
+  countries=input.required<Country[]>();
 }

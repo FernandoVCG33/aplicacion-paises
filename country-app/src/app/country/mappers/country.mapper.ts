@@ -12,4 +12,7 @@ export  class CountryMapper {
       population:restCountry.population,
     }
   }
+  static mapRestCountryArrayToCountryArray(restCountries:RestCountry[]):Country[]{
+    return restCountries.map(this.mapeRestCountryToCountry);
+  }
 }
