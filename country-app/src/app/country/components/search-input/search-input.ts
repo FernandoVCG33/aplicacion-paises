@@ -1,4 +1,4 @@
-import {Component, input, output} from '@angular/core';
+import {Component,  EventEmitter ,input, Output} from '@angular/core';
 
 @Component({
   selector: 'country-search-input',
@@ -6,6 +6,6 @@ import {Component, input, output} from '@angular/core';
   templateUrl: './search-input.html',
 })
 export class SearchInput {
-  value=output<String>();
+  @Output() value = new EventEmitter<string>();
   placeholder=input('Buscar');
 }

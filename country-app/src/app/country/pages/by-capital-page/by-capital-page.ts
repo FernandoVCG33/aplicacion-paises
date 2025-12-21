@@ -1,40 +1,30 @@
-import {Component, inject, signal} from '@angular/core';
+import { Component, inject , resource , signal } from '@angular/core';
 import {SearchInput} from '../../components/search-input/search-input';
 import {List} from '../../components/list/list';
 import {CountryService} from '../../services/country.service';
-import {Country} from '../../interfaces/country.interface';
+
+import {firstValueFrom} from 'rxjs';
+
 
 @Component({
   selector: 'app-by-capital-page',
-  imports: [
-    SearchInput,
-    List
-  ],
+  standalone: true,
+  imports: [SearchInput, List ], // <--- Agregamos módulos necesarios
   templateUrl: './by-capital-page.html',
 })
 export class ByCapitalPageComponent {
-  countryService=inject(CountryService);
-  isLoading=signal(false);
-  isError=signal<string|null>(null);
-  countries=signal<Country[]>([]);
+  countryService = inject(CountryService);
 
-  onSearch(query:String){
-    if(this.isLoading()) return;
-    this.isLoading.set(true);
-    this.isError.set(null)
-    this.countryService.searchBycapital(query)
-      .subscribe(
-        {
-          next:(countries)=>{
-            this.isLoading.set(false);
-            this.countries.set(countries);
-          },
-          error:(err)=>{
-            this.isLoading.set(false);
-            this.countries.set([]);
-            this.isError.set(`No se encontraron resultados para :${query}`);
-          }
-        },
-      );
+  query = signal('');
+
+  countryResourse=resource({
+    params: () => ({query : this.query()}),
+    loader: async ({ params }) => {
+      if(!params.query) return [];
+
+      return  await  firstValueFrom(
+        this.countryService.searchBycapital(params.query)
+      )
     }
+  });
 }
