@@ -5,4 +5,7 @@
  @if (countryResourse.error()){
   <h3>{{countryResourse.error()}}</h3>
 }
+@if (countryResourse.hasValue()  ){
+    <search-list  [countries]="countryResourse.value()!" />
+}
 

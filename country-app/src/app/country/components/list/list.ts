@@ -1,12 +1,16 @@
 import {Component, input} from '@angular/core';
 import type {Country} from '../../interfaces/country.interface';
 import {DecimalPipe} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'search-list',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, RouterLink],
   templateUrl: './list.html',
 })
 export class List {
   countries=input.required<Country[]>();
+  errorMensangue= input<string>() ;
+  isLoading= input<boolean>(false) ;
+  isEmpty= input<boolean>(false) ;
 }

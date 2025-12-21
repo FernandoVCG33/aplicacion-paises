@@ -1,7 +1,7 @@
 import { inject,Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {RestCountry} from '../interfaces/rest-countries.interfaces';
-import {map, Observable, catchError, throwError} from 'rxjs';
+import {map, Observable, catchError, throwError, delay} from 'rxjs';
 import type {Country} from '../interfaces/country.interface';
 import {CountryMapper} from '../mappers/country.mapper';
 
@@ -23,8 +23,21 @@ export class CountryService {
               new Error(`No se encontraron resultados para :${query}`);
             })
           })
-        );
-
+      );
+  } // Fin de searchBycapital
+  searchByCountry(query:String):Observable<Country[]>{
+    query=query.toLowerCase();
+    const url =`${API_RUL}/name/${query}`;
+    return this.http.get<RestCountry[]>(url)
+      .pipe(
+        delay(2000),
+        map(restCountries=> CountryMapper.mapRestCountryArrayToCountryArray(restCountries) ),
+        catchError(error =>{
+          console.error('Error fetching countries by name:', error);
+          return throwError(()=>{
+            new Error(`No se encontraron resultados para :${query}`);
+          })
+        })
+      );
   }
-
 }
