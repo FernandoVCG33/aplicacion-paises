@@ -1,10 +1,11 @@
 @if (countryResourse.error())
 {
-  <section class="flex flex-col items-center justify-center mt-10">
-    <h2>Error al cargar el país</h2>
-    <a class="link-primary cursor-pointer">Regresar</a>
-  </section>
+  <app-not-found/>
 }
+@if(countryResourse.isLoading()){
+    <h1 class="text-3xl">Cargando...</h1>
+}
+
 @if (countryResourse.hasValue()){
   <h3>Nombre es : {{ countryResourse.value()?.name }}</h3>
 }
