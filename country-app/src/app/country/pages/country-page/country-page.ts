@@ -4,11 +4,13 @@ import {rxResource} from '@angular/core/rxjs-interop';
 import {of} from 'rxjs';
 import {CountryService} from '../../services/country.service';
 import {NotFound} from '../../../shared/components/not-found/not-found';
+import {ContryInformation} from './contry-information/contry-information';
 
 @Component({
   selector: 'app-country-page',
   imports: [
-    NotFound
+    NotFound,
+    ContryInformation
   ],
   templateUrl: './country-page.html',
 })

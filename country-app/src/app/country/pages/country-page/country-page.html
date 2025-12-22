@@ -7,5 +7,6 @@
 }
 
 @if (countryResourse.hasValue()){
-  <h3>Nombre es : {{ countryResourse.value()?.name }}</h3>
+  <contry-information [contry]="countryResourse.value()!" />
+
 }
