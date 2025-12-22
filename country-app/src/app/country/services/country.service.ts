@@ -45,6 +45,7 @@ export class CountryService {
       .pipe(
         delay(2000),
         map(restCountries=> CountryMapper.mapRestCountryArrayToCountryArray(restCountries) ),
+        tap(countries => this.queryCacheCountry.set(query,countries)),
         catchError(error =>{
           console.error('Error fetching countries by name:', error);
           return throwError(()=>{
