@@ -3,7 +3,11 @@
 <section class=" row mt-2">
   <div class="flex-col">
     @for (continente of regions; track continente){
-        <button class="btn mr-2  btn-outline btn-secondary w-[100px] " >
+        <button class="btn mr-2  btn-outline btn-secondary w-[100px]"
+                (click)="selectRegion(continente)"
+                [class.btn.secondary]="selectedRegion() ===continente"
+        >
+
           {{continente}}
         </button>
     }
@@ -11,4 +15,9 @@
 </section>
 
 <!--Lista de tabla-->
-<search-list [countries]="[]" />
+<search-list
+  [countries]="countryResourse.value() ?? []"
+  [errorMensangue]="countryResourse.error()"
+  [isEmpty]="countryResourse.value()?.length==0"
+  [isLoading]="countryResourse.isLoading()"
+/>
