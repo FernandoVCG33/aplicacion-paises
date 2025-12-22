@@ -1,3 +1,14 @@
-<botons-region/>
+<h1 class="text-2xl">Por region</h1>
+<h3 class="text-lg">Seleccione :</h3>
+<section class=" row mt-2">
+  <div class="flex-col">
+    @for (continente of regions; track continente){
+        <button class="btn mr-2  btn-outline btn-secondary w-[100px] " >
+          {{continente}}
+        </button>
+    }
+  </div>
+</section>
+
 <!--Lista de tabla-->
 <search-list [countries]="[]" />

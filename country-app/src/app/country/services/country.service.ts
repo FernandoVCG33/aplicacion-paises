@@ -13,6 +13,7 @@ const  API_RUL ='https://restcountries.com/v3.1';
 export class CountryService {
   private http=inject(HttpClient);
   private queryCache= new Map<String,Country[]>();
+  private queryCacheRegion=new Map<String,Country[]>();
   searchBycapital(query:String):Observable<Country[]>{
     query=query.toLowerCase();
     if(this.queryCache.has(query)){
@@ -65,6 +66,27 @@ export class CountryService {
           console.error('Error fetching countries by name:', error);
           return throwError(()=>{
             new Error(`No se encontraron resultados para ese codifo :${code}`);
+          })
+        })
+      );
+  }//fin de searchByAlphaCode
+
+  searchByRegion(query:String):Observable<Country[]>{
+    query=query.toLowerCase();
+    const url =`${API_RUL}/region/${query}`;
+    if (this.queryCacheRegion.has(query)){
+      return of(this.queryCacheRegion.get(query) ?? []);
+    }
+    console.log(`llegando al server ${url}`);
+    return this.http.get<RESTCountry[]>(url)
+      .pipe(
+        delay(2000),
+        map(restCountries=> CountryMapper.mapRestCountryArrayToCountryArray(restCountries) ),
+        tap(countries => this.queryCacheRegion.set(query,countries)),
+        catchError(error =>{
+          console.error('Error fetching countries by name:', error);
+          return throwError(()=>{
+            new Error(`No se encontraron resultados para :${query}`);
           })
         })
       );
