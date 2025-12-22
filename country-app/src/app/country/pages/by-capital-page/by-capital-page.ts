@@ -2,7 +2,7 @@ import { Component, inject , resource , signal } from '@angular/core';
 import {SearchInput} from '../../components/search-input/search-input';
 import {List} from '../../components/list/list';
 import {CountryService} from '../../services/country.service';
-
+import {ActivatedRoute} from '@angular/router';
 import {rxResource} from '@angular/core/rxjs-interop';
 import {of} from 'rxjs';
 
@@ -15,15 +15,16 @@ import {of} from 'rxjs';
 export class ByCapitalPageComponent {
   countryService = inject(CountryService);
 
-  query = signal('');
 
+
+  activateRoute=inject(ActivatedRoute);
+  queryParam= this.activateRoute.snapshot.queryParamMap.get('query') ?? '';
+  query = signal('');
   countryResourse=rxResource({
     params: () => ({query : this.query()}),
     stream: ({ params }) => {
       if(!params.query) return of([]);
-
       return this.countryService.searchBycapital(params.query)
-
     }
   });
 }
