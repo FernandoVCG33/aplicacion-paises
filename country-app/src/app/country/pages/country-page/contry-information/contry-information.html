@@ -15,3 +15,17 @@
     <div class="stat-value">  {{contry().population }} </div>
   </div>
 </div>
+
+<section>
+  <figure class="diff aspect-16/9" tabindex="0">
+    <div class="diff-item-1" role="img" tabindex="0">
+      <img [alt]="contry().name" [src]="contry().flagSvg" />
+    </div>
+    <div class="diff-item-2" role="img">
+      <img
+        alt="daisy"
+        [src]="contry().flagSvg" />
+    </div>
+    <div class="diff-resizer"></div>
+  </figure>
+</section>

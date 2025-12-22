@@ -1,8 +1,8 @@
-import {RestCountry} from '../interfaces/rest-countries.interfaces';
+import {RESTCountry} from '../interfaces/rest-countries.interfaces';
 import {Country} from '../interfaces/country.interface';
 
 export  class CountryMapper {
-  static mapeRestCountryToCountry(restCountry:RestCountry):Country{
+  static mapeRestCountryToCountry(restCountry:RESTCountry):Country{
     return {
       capital:restCountry.capital.join(','),
       cca2:restCountry.cca2,
@@ -12,7 +12,7 @@ export  class CountryMapper {
       population:restCountry.population,
     }
   }
-  static mapRestCountryArrayToCountryArray(restCountries:RestCountry[]):Country[]{
+  static mapRestCountryArrayToCountryArray(restCountries:RESTCountry[]):Country[]{
     return restCountries.map(this.mapeRestCountryToCountry);
   }
 }
