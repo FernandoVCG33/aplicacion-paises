@@ -10,7 +10,7 @@ import {RouterLink} from '@angular/router';
 })
 export class List {
   countries=input.required<Country[]>();
-  errorMensangue= input<string>() ;
+  errorMensangue= input<string | unknown | null>() ;
   isLoading= input<boolean>(false) ;
   isEmpty= input<boolean>(false) ;
 }

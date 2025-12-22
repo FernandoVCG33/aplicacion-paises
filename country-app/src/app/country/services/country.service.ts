@@ -40,4 +40,19 @@ export class CountryService {
         })
       );
   }
+  //searchByAlphaCode
+  searchByAlphaCode(code:String){
+    const url =`${API_RUL}/name/${code}`;
+    return this.http.get<RestCountry[]>(url)
+      .pipe(
+        map(restCountries=> CountryMapper.mapRestCountryArrayToCountryArray(restCountries) ),
+        map( countries => countries.at(0) ),
+        catchError(error =>{
+          console.error('Error fetching countries by name:', error);
+          return throwError(()=>{
+            new Error(`No se encontraron resultados para ese codifo :${code}`);
+          })
+        })
+      );
+  }
 }

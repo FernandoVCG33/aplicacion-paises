@@ -2,10 +2,9 @@
     placeholder="Buscar por capital"
     (value)="query.set($event)"
 />
- @if (countryResourse.error()){
-  <h3>{{countryResourse.error()}}</h3>
-}
-@if (countryResourse.hasValue()  ){
-    <search-list  [countries]="countryResourse.value()!" />
-}
-
+<search-list
+  [countries]="countryResourse.value() ?? []"
+  [errorMensangue]="countryResourse.error()"
+  [isEmpty]="countryResourse.value()?.length==0"
+  [isLoading]="countryResourse.isLoading()"
+/>

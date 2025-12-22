@@ -34,6 +34,29 @@
             </td>
           </tr>
       }
+      @if (errorMensangue()) {
+        <tr>
+          <td colspan="8" class="text-center">
+              {{ errorMensangue() }}
+          </td>
+        </tr>
+      }
+    <!-- Si no hay resultados -->
+      @if (countries().length ==0 && !isLoading()) {
+        <tr>
+          <td colspan="8" class="text-center">
+            No hay resulrados
+          </td>
+        </tr>
+      }
+    <!-- Fin Si no hay resultados -->
+      @if (isLoading()){
+        <tr>
+          <td colspan="8" class="text-center">
+            buscando paisces
+          </td>
+        </tr>
+      }
 
     </tbody>
   </table>

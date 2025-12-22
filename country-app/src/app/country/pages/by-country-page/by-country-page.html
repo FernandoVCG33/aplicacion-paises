@@ -3,6 +3,11 @@
         (value)="query.set($event)"
 />
 
-<search-list [countries]="countryResourse.value() ?? []" />
+<search-list
+  [countries]="countryResourse.value() ?? []"
+  [errorMensangue]="countryResourse.error()"
+  [isEmpty]="countryResourse.value()?.length==0"
+  [isLoading]="countryResourse.isLoading()"
+/>
 
 
