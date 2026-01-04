@@ -1,25 +1,28 @@
 <section class="mt-5">
-  <table class="table table-md">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Icono</th>
-      <th>Bandera</th>
-      <th>Nombre</th>
-      <th>Capital</th>
-      <th>Población</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-      @for(country of countries(); track country.cca2; let index = $index) {
+
+  <div class="overflow-x-auto w-full">
+
+    <table class="table table-md min-w-full">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Icono</th>
+        <th>Bandera</th>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Población</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        @for(country of countries(); track country.cca2; let index = $index) {
           <tr>
             <td>{{index+1}}</td>
             <td>{{ country.flag }}</td>
             <td>
               <img class="w-10" [src]="country.flagSvg" [alt]="country.name">
             </td>
-            <td>
+            <td class="whitespace-nowrap">
               {{country.name}}
             </td>
             <td>
@@ -33,31 +36,33 @@
                   class="link-primary">Más información </a>
             </td>
           </tr>
-      }
-      @if (errorMensangue()) {
-        <tr>
-          <td colspan="8" class="text-center">
-              {{ errorMensangue() }}
-          </td>
-        </tr>
-      }
-    <!-- Si no hay resultados -->
-      @if (countries().length ==0 && !isLoading()) {
-        <tr>
-          <td colspan="8" class="text-center">
-            No hay resulrados
-          </td>
-        </tr>
-      }
-    <!-- Fin Si no hay resultados -->
-      @if (isLoading()){
-        <tr>
-          <td colspan="8" class="text-center">
-            buscando paisces
-          </td>
-        </tr>
-      }
+        }
 
-    </tbody>
-  </table>
-</section>
+        @if (errorMensangue()) {
+          <tr>
+            <td colspan="7" class="text-center font-bold text-red-500">
+              {{ errorMensangue() }}
+            </td>
+          </tr>
+        }
+
+        @if (countries().length == 0 && !isLoading()) {
+          <tr>
+            <td colspan="7" class="text-center">
+              No hay resultados
+            </td>
+          </tr>
+        }
+
+        @if (isLoading()){
+          <tr>
+            <td colspan="7" class="text-center">
+              Buscando países...
+            </td>
+          </tr>
+        }
+
+      </tbody>
+    </table>
+
+  </div> </section>
