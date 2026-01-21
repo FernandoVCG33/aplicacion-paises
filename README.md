@@ -7,5 +7,5 @@ La es tructura es la siguiente :
 El objetivo es el poder atra vez de angualar usar la conexion a APIS ademas de el uso de los filtros
 
 ## Estrucura del proyecto:
--app
+- app
 
