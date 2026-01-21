@@ -8,4 +8,13 @@ El objetivo es el poder atra vez de angualar usar la conexion a APIS ademas de e
 
 ## Estrucura del proyecto:
 - app
+  - country
+    - components
+    - interfaces
+    - layout/country
+    - mapper
+    - pages
+    - services
+    - country.routes.ts
+  - shared 
 
