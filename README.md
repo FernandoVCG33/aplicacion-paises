@@ -10,10 +10,18 @@ El objetivo es el poder atra vez de angualar usar la conexion a APIS ademas de e
 - app
   - country
     - components
+      - list
+      - search-input
+      - top-menu 
     - interfaces
     - layout/country
     - mapper
     - pages
+      - by-capital-page
+      - by-country-page
+      - by-region-page
+      - country-page
+        - country-information  
     - services
     - country.routes.ts
   - shared 
