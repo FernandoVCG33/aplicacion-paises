@@ -24,5 +24,9 @@ El objetivo es el poder atra vez de angualar usar la conexion a APIS ademas de e
         - country-information  
     - services
     - country.routes.ts
-  - shared 
+  - shared
+    - components
+      - footer
+      - not-found 
+    - pages/home 
 
