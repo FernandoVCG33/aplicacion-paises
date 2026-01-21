@@ -4,4 +4,8 @@ La siguiente aplicación de angular Se basa en poder encontrar países por capit
 La es tructura es la siguiente :
 
 ### Objetivo
-El objetivo es el siguiente 
+El objetivo es el poder atra vez de angualar usar la conexion a APIS ademas de el uso de los filtros
+
+## Estrucura del proyecto:
+-app
+
